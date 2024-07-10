@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "coinstac first example",
+    "id": "avg_test_meshnet_no_wan",
+    "version": "v1.0.0",
+    "repository": "https:\/\/github.com\/trendscenter\/coinstac-first-example",
+    "description": "An example code to demonstrate coinstac's working",
+    "compspecVersion": 2
+  },
+  "computation": {
+    "type": "docker",
+    "dockerImage": "avg_test_meshnet_no_wan",
+    "command": [
+      "python",
+      "\/computation\/scripts\/local.py"
+    ],
+    "remote": {
+      "type": "docker",
+      "dockerImage": "avg_test_meshnet_no_wan",
+      "command": [
+        "python",
+        "\/computation\/scripts\/remote.py"
+      ]
+    },
+    "input": {
+      "covariates": {
+        "type": "array"
+      }
+    },
+    "output": {
+      "Beta": {
+        "type": "array"
+      }
+    }
+  }
+}
