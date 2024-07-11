@@ -27,5 +27,5 @@ This is a light distributed version of MeshNet using [Coinstac](https://github.c
 
 <br>
 
-For further info please refer to [Wiki](https://github.com/Mmasoud1/MeshDist/wiki)
+For setup issues and possible fixes please refer to [Wiki](https://github.com/Mmasoud1/MeshDist/wiki/Troubleshooting)
 
