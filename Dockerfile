@@ -21,4 +21,4 @@ RUN echo "Logging network configuration..." && \
     cat /etc/resolv.conf
 
 # Set the command to run the application
-CMD ["sh", "-c", "ping -c 4 google.com && nslookup google.com && python ./scripts/entry.py"]
+CMD ["sh", "-c", "nslookup google.com && python ./scripts/entry.py"]
