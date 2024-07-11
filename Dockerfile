@@ -12,15 +12,13 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container
 COPY . /computation
 
-# Add DNS settings to the container
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
-
-# Verify network connectivity
-RUN apt-get update && apt-get install -y iputils-ping dnsutils
-RUN ping -c 4 google.com
-RUN nslookup google.com
+# Copy and run the DNS setup script
+COPY setup_dns.sh /computation/setup_dns.sh
+RUN chmod +x /computation/setup_dns.sh
+RUN /computation/setup_dns.sh
 
 # Set the command to run the application
 CMD ["python", "./scripts/entry.py"]
+
 
 
