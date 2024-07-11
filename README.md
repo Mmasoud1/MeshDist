@@ -14,16 +14,16 @@ This is a light distributed version of MeshNet using [Coinstac](https://github.c
 
 	     cd MeshDist
 
-3- Download training dataset from this [link](https://drive.google.com/file/d/1ONjE0LN-HRIimJmTsSgHZPQBdqVRXrd8/view?usp=sharing), and place copies into each local? e.g. /test/input/local0/simulatorRun/
+<!-- 3- Download training dataset from this [link](https://drive.google.com/file/d/1ONjE0LN-HRIimJmTsSgHZPQBdqVRXrd8/view?usp=sharing), and place copies into each local? e.g. /test/input/local0/simulatorRun/ -->
 
 
-4- Build the Docker image (Docker must be running):
+3- Build the Docker image (Docker must be running):
 
          docker build -t avg_test_meshnet_no_wan .
       
 
 
-5- Run the code:
+4- Run the code:
 
          coinstac-simulator
       

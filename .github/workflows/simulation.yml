@@ -15,6 +15,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        lfs: true  # Ensures Git LFS files are pulled
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -25,7 +27,6 @@ jobs:
       run: sudo npm i -g coinstac-simulator
 
     - name: Build Docker image
-      working-directory: .
       run: docker build -t avg_test_meshnet_no_wan .
 
     - name: Run the terminal simulator
