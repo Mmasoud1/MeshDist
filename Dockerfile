@@ -21,4 +21,5 @@ RUN echo "Logging network configuration..." && \
     cat /etc/resolv.conf
 
 # Set the command to run the application
-CMD ["sh", "-c", "nslookup google.com && python ./scripts/entry.py"]
+CMD ["sh", "-c", "echo 'Checking DNS resolution...' && nslookup google.com && echo 'Starting coinstac-simulator...' && coinstac-simulator"]
+
