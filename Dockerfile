@@ -12,21 +12,18 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container
 COPY . /computation
 
-# Copy and run the DNS setup script
-COPY setup_dns.sh /computation/setup_dns.sh
-RUN chmod +x /computation/setup_dns.sh
-RUN /computation/setup_dns.sh
+# Install additional debugging tools and verify network connectivity
+RUN apt-get update && \
+    apt-get install -y iputils-ping dnsutils curl && \
+    echo "Pinging google.com..." && \
+    ping -c 4 google.com || { echo "Ping failed"; exit 1; } && \
+    echo "Performing nslookup for google.com..." && \
+    nslookup google.com || { echo "Nslookup failed"; exit 1; }
 
 # Log network configuration
-RUN ip addr show
-RUN cat /etc/resolv.conf
-
-# Install additional debugging tools
-RUN apt-get update && apt-get install -y curl
+RUN echo "Logging network configuration..." && \
+    ip addr show && \
+    cat /etc/resolv.conf
 
 # Set the command to run the application
 CMD ["python", "./scripts/entry.py"]
-
-
-
-
