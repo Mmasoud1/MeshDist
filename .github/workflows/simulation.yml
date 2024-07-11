@@ -30,4 +30,4 @@ jobs:
       run: docker build -t avg_test_meshnet_no_wan .
 
     - name: Run the terminal simulator
-      run: docker run avg_test_meshnet_no_wan
+      run: coinstac-simulator
