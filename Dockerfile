@@ -12,13 +12,8 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container
 COPY . /computation
 
-# Install additional debugging tools and verify network connectivity
-RUN apt-get update && \
-    apt-get install -y iputils-ping dnsutils curl && \
-    echo "Pinging google.com..." && \
-    ping -c 4 google.com || { echo "Ping failed"; exit 1; } && \
-    echo "Performing nslookup for google.com..." && \
-    nslookup google.com || { echo "Nslookup failed"; exit 1; }
+# Install additional debugging tools
+RUN apt-get update && apt-get install -y iputils-ping dnsutils curl
 
 # Log network configuration
 RUN echo "Logging network configuration..." && \
@@ -26,4 +21,4 @@ RUN echo "Logging network configuration..." && \
     cat /etc/resolv.conf
 
 # Set the command to run the application
-CMD ["python", "./scripts/entry.py"]
+CMD ["sh", "-c", "ping -c 4 google.com && nslookup google.com && python ./scripts/entry.py"]
