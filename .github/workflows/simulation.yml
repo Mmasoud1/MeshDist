@@ -16,15 +16,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Download COINSTAC AppImage
-      run: wget https://github.com/trendscenter/coinstac/releases/download/v6.8.5/COINSTAC-6.8.5-linux.AppImage
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
-    - name: Make COINSTAC AppImage executable
-      run: chmod a+x COINSTAC-6.8.5-linux.AppImage
-
-    - name: Run COINSTAC AppImage
-      run: ./COINSTAC-6.8.5-linux.AppImage &
-      # Run in background to continue with the next steps
+    - name: Install coinstac-simulator
+      run: sudo npm i -g coinstac-simulator
 
     - name: Build Docker image
       working-directory: .
