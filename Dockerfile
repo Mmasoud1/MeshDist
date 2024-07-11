@@ -17,6 +17,13 @@ COPY setup_dns.sh /computation/setup_dns.sh
 RUN chmod +x /computation/setup_dns.sh
 RUN /computation/setup_dns.sh
 
+# Log network configuration
+RUN ip addr show
+RUN cat /etc/resolv.conf
+
+# Install additional debugging tools
+RUN apt-get update && apt-get install -y curl
+
 # Set the command to run the application
 CMD ["python", "./scripts/entry.py"]
 
