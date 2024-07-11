@@ -1,0 +1,2 @@
+test/input/local0/simulatorRun/mindboggle.db filter=lfs diff=lfs merge=lfs -text
+test/input/local1/simulatorRun/mindboggle.db filter=lfs diff=lfs merge=lfs -text
